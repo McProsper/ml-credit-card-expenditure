@@ -68,7 +68,7 @@ page = st.sidebar.radio(
 df = load_data()
 
 if df is not None:
-    if page == "📊 Exploration des données":
+    if page == "Exploration des données":
         st.header("Exploration des Données")
         
         # Statistiques générales
@@ -214,7 +214,7 @@ if df is not None:
                 test_r2 = r2_score(y_test, y_test_pred)
                 
                 # Affichage des métriques
-                st.subheader("📊 Métriques de performance")
+                st.subheader("Métriques de performance")
                 
                 col1, col2, col3 = st.columns(3)
                 with col1:
@@ -365,7 +365,7 @@ if df is not None:
                 with col3:
                     st.metric("Cartes actives", active)
     
-    elif page == "📈 Évaluation du modèle":
+    elif page == "Évaluation du modèle":
         st.header("Évaluation Détaillée du Modèle")
         
         if 'model' not in st.session_state:
