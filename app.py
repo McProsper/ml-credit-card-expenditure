@@ -18,7 +18,7 @@ st.set_page_config(
 )
 
 # Titre principal
-st.title("💳 Application de Machine Learning - Prédiction des Dépenses")
+st.title("Projet de Machine Learning - Prédiction des Dépenses")
 st.markdown("**Modèle : KNN (K-Nearest Neighbors) optimisé**")
 st.markdown("**Target : Expenditure (Dépenses)**")
 
@@ -61,7 +61,7 @@ def preprocess_data(df):
 st.sidebar.title("Navigation")
 page = st.sidebar.radio(
     "Choisir une section",
-    ["📊 Exploration des données", "🤖 Entraînement du modèle", "🔮 Prédictions", "📈 Évaluation du modèle"]
+    ["Exploration des données", "Entraînement du modèle", "Prédictions", "Évaluation du modèle"]
 )
 
 # Chargement des données
@@ -126,7 +126,7 @@ if df is not None:
                        color_continuous_scale='RdBu')
         st.plotly_chart(fig, use_container_width=True)
     
-    elif page == "🤖 Entraînement du modèle":
+    elif page == "Entraînement du modèle":
         st.header("Entraînement et Optimisation du Modèle KNN")
         
         # Préprocessing
@@ -145,7 +145,7 @@ if df is not None:
         X_train_scaled = scaler.fit_transform(X_train)
         X_test_scaled = scaler.transform(X_test)
         
-        st.info(f"📊 Données d'entraînement : {len(X_train)} échantillons | Données de test : {len(X_test)} échantillons")
+        st.info(f"Données d'entraînement : {len(X_train)} échantillons | Données de test : {len(X_test)} échantillons")
         
         # Paramètres d'optimisation
         st.subheader("Paramètres d'optimisation")
@@ -162,7 +162,7 @@ if df is not None:
             algorithms = ['auto', 'ball_tree', 'kd_tree', 'brute']
             algorithm = st.multiselect("Algorithmes", algorithms, default=['auto'])
         
-        if st.button("🚀 Entraîner et Optimiser le Modèle", type="primary"):
+        if st.button("Entraîner et Optimiser le Modèle", type="primary"):
             with st.spinner("Entraînement en cours..."):
                 if optimize:
                     # GridSearchCV pour optimisation
@@ -283,7 +283,7 @@ if df is not None:
                     st.plotly_chart(fig, use_container_width=True)
                 
                 # Sauvegarde du modèle
-                st.subheader("💾 Sauvegarde du modèle")
+                st.subheader("Sauvegarde du modèle")
                 if st.button("Sauvegarder le modèle"):
                     with open('knn_model.pkl', 'wb') as f:
                         pickle.dump(best_model, f)
@@ -300,7 +300,7 @@ if df is not None:
                 st.session_state['features'] = features
                 st.session_state['best_params'] = best_params
     
-    elif page == "🔮 Prédictions":
+    elif page == "Prédictions":
         st.header("Faire une Prédiction")
         
         # Vérifier si le modèle est entraîné
@@ -326,7 +326,7 @@ if df is not None:
                 majorcards = st.selectbox("Cartes majeures", [0, 1])
                 active = st.number_input("Nombre de cartes actives", min_value=0, max_value=50, value=6)
             
-            if st.button("🔮 Prédire les Dépenses", type="primary"):
+            if st.button("Prédire les Dépenses", type="primary"):
                 # Préparation des données
                 le_card = st.session_state['label_encoders']['card']
                 le_owner = st.session_state['label_encoders']['owner']
